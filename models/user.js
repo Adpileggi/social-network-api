@@ -43,7 +43,7 @@ const userSchema = new Schema(
 userSchema
     .virtual('friendCount')
     .get(function () {
-        return `This user has ${this.friends.length + 1} friends`
+        return `This user has ${this.friends.length} friends`
     })
     // need a .set? only need to find arr lenght?
 
