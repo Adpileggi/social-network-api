@@ -1,4 +1,5 @@
 const { Thought } = require('../models');
+const { findOneAndUpdate } = require('../models/thought');
 const User = require('../models/user');
 
 module.exports = {
@@ -72,4 +73,33 @@ module.exports = {
             res.status(500).json(err);
         }
     },
+    async addFriend(req, res) {
+        try {
+            const user =  await User.findOneAndUpdate(
+                { _id: req.params.userId},
+                { $addToSet: { friends: req.params.friendId} },
+                { runValidators: true, new: true}
+            )
+
+            res.json(user);
+        } catch (err) {
+            res.status(500).json(err);
+        }
+    },
+    async removeFriend(req, res) {
+        try {
+            console.log("in the remove friend route")
+            const user = await User.findOneAndUpdate(
+                { _id: req.params.userId },
+                { $pull: { friends: req.parmas.friendId} },
+                { new: true }
+            )
+
+            console.log(user)
+            res.json(user);
+        } catch (err) {
+            console.log('500 err')
+            res.status(500).json(err);
+        }
+    }
 };
