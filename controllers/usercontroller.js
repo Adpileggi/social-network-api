@@ -88,14 +88,13 @@ module.exports = {
     },
     async removeFriend(req, res) {
         try {
-            console.log("in the remove friend route")
+
             const user = await User.findOneAndUpdate(
                 { _id: req.params.userId },
-                { $pull: { friends: req.parmas.friendId} },
+                { $pull: { friends: req.params.friendId} },
                 { new: true }
             )
 
-            console.log(user)
             res.json(user);
         } catch (err) {
             console.log('500 err')
