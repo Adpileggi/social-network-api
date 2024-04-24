@@ -20,6 +20,8 @@
 
   When a user enters the command to invoke the applicaion, Mongoose models are synced to the MongoDB database. A user can then use an applicaion like insomina to use ```GET```, ```PUT```, ```POST```, and ```DELETE``` routes to query the database.
 
+  [Video Walkthrough](https://drive.google.com/file/d/1oIOsv1PAa5Y1_M3Xq_dcAv1issPF1aad/view)
+
   ## Testing
 
   N/A
